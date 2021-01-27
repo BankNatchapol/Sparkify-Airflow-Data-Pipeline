@@ -83,8 +83,15 @@ staging_songs_table_create = CreateRedshiftTablesOperator(
 )
 
 stage_events_to_redshift = StageToRedshiftOperator(
-    task_id='Stage_events',
-    dag=dag
+    task_id = 'Stage_events',
+    dag = dag,
+    table = 'staging_events',
+    redshift_conn_id = 'redshift',
+    aws_credentials_id = 'aws_credentials_id',
+    s3_key = s3_logdata_key,
+    s3_bucket = s3_bucket,
+    JSON_formatting = s3_full_jsonpath,
+    append_data = False
 )
 
 stage_songs_to_redshift = StageToRedshiftOperator(
