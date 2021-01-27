@@ -7,9 +7,6 @@ from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
                                 CreateRedshiftTablesOperator)
 from helpers import SqlQueries, CreateTables
 
-AWS_KEY = os.environ.get('AWS_KEY')
-AWS_SECRET = os.environ.get('AWS_SECRET')
-
 default_args = {
     'owner': 'Adrien',
     'depends_on_past': False,
