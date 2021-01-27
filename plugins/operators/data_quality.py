@@ -6,6 +6,10 @@ class DataQualityOperator(BaseOperator):
 
     ui_color = '#89DA59'
 
+    insert_sql = ("""
+        INSERT INTO {} ({}) {}
+    """)
+    
     @apply_defaults
     def __init__(self,
                  # Define your operators params (with defaults) here
@@ -15,7 +19,7 @@ class DataQualityOperator(BaseOperator):
 
         super(DataQualityOperator, self).__init__(*args, **kwargs)
         # Map params here
-        # Example:
+        # Example:n 
         # self.conn_id = conn_id
 
     def execute(self, context):
