@@ -3,8 +3,9 @@ import os
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
-                                LoadDimensionOperator, DataQualityOperator)
-from helpers import SqlQueries
+                                LoadDimensionOperator, DataQualityOperator, 
+                                CreateRedshiftTablesOperator)
+from helpers import SqlQueries, CreateTables
 
 # AWS_KEY = os.environ.get('AWS_KEY')
 # AWS_SECRET = os.environ.get('AWS_SECRET')
