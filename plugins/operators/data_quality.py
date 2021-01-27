@@ -15,7 +15,7 @@ class DataQualityOperator(BaseOperator):
         super(DataQualityOperator, self).__init__(*args, **kwargs)
         
         self.tables = tables
-        self.conn_id = redshift_conn_id
+        self.redshift_conn_id = redshift_conn_id
 
     def execute(self, context):
         redshift = PostgresHook(postgres_conn_id = self.redshift_conn_id)
