@@ -116,6 +116,8 @@ config_dwh["AWS"] = {
 }
 
 config_dwh["REDSHIFT"] = {
+    "CONN_ID":config_dwh.get('REDSHIFT','CONN_ID'),
+    "CONN_TYPE":config_dwh.get('REDSHIFT','CONN_TYPE'),
     "DWH_CLUSTER_TYPE":DWH_CLUSTER_TYPE,
     "DWH_NUM_NODES":DWH_NUM_NODES, 
     "DWH_NODE_TYPE":DWH_NODE_TYPE,
