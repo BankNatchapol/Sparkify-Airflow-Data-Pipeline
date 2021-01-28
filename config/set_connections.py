@@ -6,7 +6,7 @@ config = configparser.ConfigParser()
 config.read_file(open('config/config.cfg'))
 
 aws_conn = Connection(
-        conn_id=config.get('AWS', 'CONN_ID'),
+        conn_id=conf1ig.get('AWS', 'CONN_ID'),
         conn_type=config.get('AWS','CONN_TYPE'),
         login=config.get('AWS','LOGIN'),
         password=config.get('AWS','PASSWORD'),
