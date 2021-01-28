@@ -1,0 +1,13 @@
+logs/
+__pycache__/
+
+*.cfg
+*.err
+*.log
+*.out
+*.pid
+*.db
+*.sh
+.DS_Store
+
+webserver_config.py
