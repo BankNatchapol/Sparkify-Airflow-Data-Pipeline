@@ -129,6 +129,11 @@ config_dwh["REDSHIFT"] = {
     "HOST": DWH_ENDPOINT
 }
 
+config_dwh["S3"] = {
+    "S3_SONG_KEY":config_dwh.get('S3','S3_SONG_KEY'),
+    "S3_LOG_KEY":config_dwh.get('S3','S3_LOG_KEY'),
+    "S3_BUCKET": config_dwh.get('S3','S3_BUCKET')
+}
 
 #Write the above sections to dwh.cfg file
 with open('config/config.cfg', 'w') as conf:

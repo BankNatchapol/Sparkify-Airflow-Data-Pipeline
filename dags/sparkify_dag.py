@@ -1,19 +1,16 @@
 from datetime import datetime, timedelta
 import os
 from airflow import DAG
+from airflow.models import Variable
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
                                 LoadDimensionOperator, DataQualityOperator,
                                 CreateRedshiftTablesOperator)
 from helpers import SqlQueries, CreateTables
 
-import configparser
-config = configparser.ConfigParser()
-config.read_file(open('config/ds.cfg'))
-
-S3_SONG_KEY = config.get('S3','S3_SONG_KEY')
-S3_LOG_KEY = config.get('S3','S3_LOG_KEY')
-S3_BUCKET = config.get('S3','S3_BUCKET')
+S3_SONG_KEY = Variable.get('S3_SONG_KEY')
+S3_LOG_KEY = Variable.get('S3_LOG_KEY')
+S3_BUCKET = Variable.get('S3_BUCKET')
 
 default_args = {
     'owner': 'Bank',
@@ -187,6 +184,9 @@ time_table_create >> stage_songs_to_redshift
 
 staging_events_table_create >> stage_songs_to_redshift
 staging_songs_table_create >> stage_songs_to_redshift
+
+stage_events_to_redshift >> load_songplays_table
+stage_songs_to_redshift >> load_songplays_table
 
 load_songplays_table >> load_song_dimension_table
 load_songplays_table >> load_user_dimension_table
