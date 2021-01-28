@@ -5,7 +5,7 @@ import json
 # Load DWH Params from a file
 import configparser
 config_infra = configparser.ConfigParser()
-config_infra.read_file(open('../config/config.cfg'))
+config_infra.read_file(open('config/config.cfg'))
 
 KEY                    = config_infra.get('AWS','KEY')
 SECRET                 = config_infra.get('AWS','SECRET')
@@ -21,9 +21,9 @@ DWH_DB_PASSWORD        = config_infra.get("DWH","DWH_DB_PASSWORD")
 DWH_PORT               = config_infra.get("DWH","DWH_PORT")
 
 print(pd.DataFrame({"Param":
-                  ["DWH_CLUSTER_TYPE", "DWH_NUM_NODES", "DWH_NODE_TYPE", "DWH_CLUSTER_IDENTIFIER", "DWH_DB", "DWH_DB_USER", "DWH_DB_PASSWORD", "DWH_PORT", "DWH_IAM_ROLE_NAME"],
+                  ["DWH_CLUSTER_TYPE", "DWH_NUM_NODES", "DWH_NODE_TYPE", "DWH_CLUSTER_IDENTIFIER", "DWH_DB", "DWH_DB_USER", "DWH_DB_PASSWORD", "DWH_PORT"],
               "Value":
-                  [DWH_CLUSTER_TYPE, DWH_NUM_NODES, DWH_NODE_TYPE, DWH_CLUSTER_IDENTIFIER, DWH_DB, DWH_DB_USER, DWH_DB_PASSWORD, DWH_PORT, DWH_IAM_ROLE_NAME]
+                  [DWH_CLUSTER_TYPE, DWH_NUM_NODES, DWH_NODE_TYPE, DWH_CLUSTER_IDENTIFIER, DWH_DB, DWH_DB_USER, DWH_DB_PASSWORD, DWH_PORT]
              }))
 
 ###
